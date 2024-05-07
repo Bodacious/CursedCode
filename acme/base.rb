@@ -5,6 +5,14 @@ module Acme
 
     API_BASE_URL = "https://dummyjson.com/".freeze
 
+    attr_reader :connection
+
+    def initialize
+      @connection = Faraday.new(API_BASE_URL) do |config|
+        config.request(:json)
+        config.response(:json)
+      end
+    end
     def get(path, **params)
       make_request(:get, path, **params)
     end
@@ -23,16 +31,9 @@ module Acme
 
     private
 
-    def faraday_connection
-      @faraday_connection ||= Faraday.new(API_BASE_URL) do |config|
-        config.request(:json)
-        config.response(:json)
-      end
-    end
-
     def make_request(verb, path, **params_or_data)
       uri = URI.join(API_BASE_URL, path)
-      response = faraday_connection.public_send(verb, uri, **params_or_data)
+      response = connection.public_send(verb, uri, **params_or_data)
       response.body
     end
   end
