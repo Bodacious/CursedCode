@@ -8,3 +8,5 @@ gem "minitest", "~> 5.22"
 
 gem "webmock"
 gem "rake", "~> 13.2"
+
+gem "pry"

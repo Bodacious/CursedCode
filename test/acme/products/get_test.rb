@@ -8,7 +8,9 @@ module Acme
     class GetTest < Minitest::Test
       def test_call_calls_the_right_endpoint
         stub_request(:get, "https://dummyjson.com/products/1").
-          to_return(status: 200, body: "{\"title\": \"Product title\"}")
+          to_return(status: 200,
+                    body: {title: "Product title"}.to_json,
+                    headers: {"Content-Type" => 'application/json'})
         response_body = Acme::Products::Get.call(1)
 
         assert_instance_of Hash, response_body

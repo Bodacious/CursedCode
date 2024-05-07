@@ -8,7 +8,6 @@ end
 
 task :default => [:test, :run]
 
-
 desc "Run the acme.rb file and see if it works!"
 task :run do
   load("./acme.rb")
