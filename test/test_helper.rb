@@ -1,4 +1,4 @@
-require 'minitest/autorun'
-require 'webmock/minitest'
+require "minitest/autorun"
+require "webmock/minitest"
 
-$LOAD_PATH.unshift(File.expand_path('../../', __FILE__))
+$LOAD_PATH.unshift(File.expand_path("..", __dir__))
