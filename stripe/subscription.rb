@@ -31,7 +31,9 @@ module Stripe
     def cancel(id)
       endpoint = [SUBSCRIPTION_BASE_URL, id].join("/")
 
-      delete(endpoint)
+      response = delete(endpoint)
+
+      JSON.parse(response)
     end
   end
 end

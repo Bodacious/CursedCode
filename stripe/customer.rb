@@ -2,13 +2,11 @@ require "stripe/base"
 
 module Stripe
   class Customer < Base
-    CUSTOMER_BASE_URL = "#{BASE_URL}/v1/customers"
+    CUSTOMER_BASE_URL = "#{BASE_URL}/v1/customers".freeze
 
-    # Can be made better to limit the number of results
     def list
       response = get(CUSTOMER_BASE_URL)
 
-      # This is normally parsed as JSON but if required it can be converted to whatever other data type as required from here
       JSON.parse(response)
     end
 
@@ -29,7 +27,7 @@ module Stripe
     def patch(id, attributes)
       endpoint = [CUSTOMER_BASE_URL, id].join("/")
 
-      response = patch(endpoint, attributes)
+      response = super(endpoint, attributes)
 
       JSON.parse(response)
     end
@@ -37,7 +35,9 @@ module Stripe
     def delete(id)
       endpoint = [CUSTOMER_BASE_URL, id].join("/")
 
-      delete(endpoint)
+      response = super(endpoint)
+
+      JSON.parse(response)
     end
 
     def search(query)
