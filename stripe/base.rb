@@ -1,35 +1,31 @@
 # frozen_string_literal: true
 
-require "rest-client"
+require 'rest-client'
 
 module Stripe
   class Base
-    BASE_URL = "https://api.stripe.com"
+    BASE_URL = 'https://api.stripe.com'
 
     def post(url, payload)
-      response = RestClient.post(url, payload.to_json, { **api_headers })
-      response
+      RestClient.post(url, payload.to_json, { **api_headers })
     rescue RestClient::ExceptionWithResponse => e
       raise e
     end
 
     def get(url, params: {}, string_params: false)
-      response = RestClient.get(url, { **api_headers, params: })
-      response
+      RestClient.get(url, { **api_headers, params: })
     rescue RestClient::ExceptionWithResponse => e
       raise e
     end
 
     def patch(url, payload)
-      response = RestClient.patch(url, payload.to_json, { **api_headers })
-      response
+      RestClient.patch(url, payload.to_json, { **api_headers })
     rescue RestClient::ExceptionWithResponse => e
       raise e
     end
 
     def delete(url)
-      response = RestClient.delete(url, { **api_headers })
-      response
+      RestClient.delete(url, { **api_headers })
     rescue RestClient::ExceptionWithResponse => e
       raise e
     end
@@ -38,9 +34,9 @@ module Stripe
 
     def api_headers
       {
-        accept: "application/json",
-        content_type: "application/json",
-        authorization: "Bearer #{ENV["STRIPE_API_KEY"]}"
+        accept: 'application/json',
+        content_type: 'application/json',
+        authorization: "Bearer #{ENV.fetch('STRIPE_API_KEY', nil)}"
       }
     end
   end

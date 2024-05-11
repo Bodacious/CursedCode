@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'test_helper'
 require 'stripe/subscription'
 
@@ -6,7 +7,7 @@ module Stripe
   class SubscriptionTest < Minitest::Test
     def test_create_subscription
       attributes = { customer: 'cust_123', items: [{ price: 'price_001' }] }
-      stub_request(:post, "https://api.stripe.com/v1/subscriptions")
+      stub_request(:post, 'https://api.stripe.com/v1/subscriptions')
         .with(body: attributes.to_json)
         .to_return(status: 200,
                    body: {

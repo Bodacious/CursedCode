@@ -1,8 +1,10 @@
-require "stripe/base"
+# frozen_string_literal: true
+
+require 'stripe/base'
 
 module Stripe
   class Subscription < Base
-    SUBSCRIPTION_BASE_URL = "#{BASE_URL}/v1/subscriptions"
+    SUBSCRIPTION_BASE_URL = "#{BASE_URL}/v1/subscriptions".freeze
 
     def create(customer, price)
       attributes = { customer:, items: [{ price: }] }
@@ -13,23 +15,23 @@ module Stripe
     end
 
     def fetch_one(id)
-      endpoint = [SUBSCRIPTION_BASE_URL, id].join("/")
+      endpoint = [SUBSCRIPTION_BASE_URL, id].join('/')
 
       response = get(endpoint)
 
       JSON.parse(response)
     end
 
-    def resume(id, attributes)
-      endpoint = [SUBSCRIPTION_BASE_URL, id].join("/")
+    def resume(id, _attributes)
+      endpoint = [SUBSCRIPTION_BASE_URL, id].join('/')
 
-      response = post(endpoint, { billing_cycle_anchor: "now" })
+      response = post(endpoint, { billing_cycle_anchor: 'now' })
 
       JSON.parse(response)
     end
 
     def cancel(id)
-      endpoint = [SUBSCRIPTION_BASE_URL, id].join("/")
+      endpoint = [SUBSCRIPTION_BASE_URL, id].join('/')
 
       response = delete(endpoint)
 

@@ -1,4 +1,6 @@
-require "stripe/base"
+# frozen_string_literal: true
+
+require 'stripe/base'
 
 module Stripe
   class Customer < Base
@@ -17,7 +19,7 @@ module Stripe
     end
 
     def fetch_one(id)
-      endpoint = [CUSTOMER_BASE_URL, id].join("/")
+      endpoint = [CUSTOMER_BASE_URL, id].join('/')
 
       response = get(endpoint)
 
@@ -25,7 +27,7 @@ module Stripe
     end
 
     def patch(id, attributes)
-      endpoint = [CUSTOMER_BASE_URL, id].join("/")
+      endpoint = [CUSTOMER_BASE_URL, id].join('/')
 
       response = super(endpoint, attributes)
 
@@ -33,7 +35,7 @@ module Stripe
     end
 
     def delete(id)
-      endpoint = [CUSTOMER_BASE_URL, id].join("/")
+      endpoint = [CUSTOMER_BASE_URL, id].join('/')
 
       response = super(endpoint)
 
