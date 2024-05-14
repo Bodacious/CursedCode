@@ -8,30 +8,18 @@ module Stripe
 
     def post(url, payload)
       RestClient.post(url, payload.to_json, { **api_headers })
-    rescue RestClient::ExceptionWithResponse => e
-      puts 'API Error'
-      raise e
     end
 
     def get(url, params: {})
       RestClient.get(url, { **api_headers, params: })
-    rescue RestClient::ExceptionWithResponse => e
-      puts 'API Error'
-      raise e
     end
 
     def patch(url, payload)
       RestClient.patch(url, payload.to_json, { **api_headers })
-    rescue RestClient::ExceptionWithResponse => e
-      puts 'API Error'
-      raise e
     end
 
     def delete(url)
       RestClient.delete(url, { **api_headers })
-    rescue RestClient::ExceptionWithResponse => e
-      puts 'API Error'
-      raise e
     end
 
     protected
