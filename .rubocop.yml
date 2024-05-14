@@ -1,0 +1,11 @@
+AllCops:
+  TargetRubyVersion: 3.3.0
+  NewCops: enable
+  SuggestExtensions: false
+
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
