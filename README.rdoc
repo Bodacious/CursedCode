@@ -1,5 +1,7 @@
 = API Base Class example
 
+[![Ruby](https://github.com/Bodacious/BaseClassExample/actions/workflows/ruby.yml/badge.svg)](https://github.com/Bodacious/BaseClassExample/actions/workflows/ruby.yml)
+
 == Description
 
 TODO
