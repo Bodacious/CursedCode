@@ -22,7 +22,7 @@ module Stripe
       RestClient.delete(url, { **api_headers })
     end
 
-    protected
+    private
 
     def api_headers
       {
