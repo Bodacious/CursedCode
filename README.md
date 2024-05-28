@@ -1,5 +1,8 @@
 # 🧙🏻‍♀️ Cursed Code 👻
 
+[YouTube Playlist for this repo](https://youtube.com/playlist?list=PLSoe3m51zPA3LaXGdtKgWEOkzoqe66c_w&si=XU7-zKa9OSf2c5jP)
+
+
 ## About This Repo
 Welcome to the **Cursed Code** repository, a collection of _cursed_ Ruby code snippets submitted by the global Ruby community. The goal is to refactor these monstrosities on a YouTube channel, turning them into clean, maintainable code. 
 
