@@ -4,7 +4,9 @@
 
 
 ## About This Repo
-Welcome to the **Cursed Code** repository, a collection of _cursed_ Ruby code snippets submitted by the global Ruby community. The goal is to refactor these monstrosities on a YouTube channel, turning them into clean, maintainable code. 
+Welcome to the **Cursed Code** repository, a collection of _cursed_ Ruby code snippets submitted by the global Ruby community. 
+
+The code examples here are submitted by the global Ruby community, with the aim of them being refactored as educational guides. 
 
 ## How to Read the Code Examples
 All code examples are organised into their own directories. Each directory contains:
