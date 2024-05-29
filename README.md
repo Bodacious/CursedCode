@@ -1,4 +1,4 @@
-# 🧙🏻‍♀️ Cursed Code 👻
+# 🧙🧙🏻‍{ Cursed Code } 🧙🧙
 
 [YouTube Playlist for this repo](https://youtube.com/playlist?list=PLSoe3m51zPA3LaXGdtKgWEOkzoqe66c_w&si=XU7-zKa9OSf2c5jP)
 
@@ -19,11 +19,11 @@ All code examples are organised into their own directories. Each directory conta
 3. Create a Pull Request (PR) to propose your submission.
 
 ## Rules of Submission
-- You must have permission to share the code publicly.
-- The code must be written in Ruby.
-- Limit your example to a maximum of 5 files and 500 lines of code.
-- The code must include tests that can be easily run.
-- Ensure the code includes a `Gemfile` for dependency management.
+1. You must have permission to share the code publicly, and consent to your code being used and refactored in various media.
+2. The code must be written in Ruby.
+3. Limit your example to a maximum of 5 files and 500 lines of code.
+4. The code must include tests that can be easily run (preferably with `rake`)
+5. Ensure the code includes a `Gemfile` for dependency management.
 
 ## Voting for Content You Would Like to See
 Browse the pull requests and vote for the suggestions you'd like to see refactored by giving them a 👍 thumbs-up emoji.
