@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require_relative 'base'
+require_relative 'api_client'
 
 module Stripe
-  class Customer < Base
+  class Customer < APIClient
     CUSTOMER_BASE_URL = "#{BASE_URL}/v1/customers".freeze
 
     def list

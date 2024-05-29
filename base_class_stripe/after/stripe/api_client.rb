@@ -3,7 +3,7 @@
 require 'rest-client'
 
 module Stripe
-  class Base
+  class APIClient
     BASE_URL = 'https://api.stripe.com'
 
     def post(url, payload)
