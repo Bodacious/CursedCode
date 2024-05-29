@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'stripe/base'
+require_relative 'base'
 
 module Stripe
   class Subscription < Base
