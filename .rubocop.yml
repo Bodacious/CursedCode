@@ -1,8 +1,18 @@
 AllCops:
   TargetRubyVersion: 3.3.0
   NewCops: enable
-  SuggestExtensions: false
+  SuggestExtensions: true
 
+require: ['rubocop-rake', 'rubocop-minitest']
+
+Rake:
+  Enabled: true
+
+Minitest/MultipleAssertions:
+  Enabled: false
+
+Minitest/AssertTruthy:
+  Enabled: false
 
 Style/Documentation:
   Enabled: false
