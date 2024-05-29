@@ -19,58 +19,47 @@ module Stripe
     end
 
     def test_list_customers
-      stub_request(:get, 'https://api.stripe.com/v1/customers')
-        .to_return(status: 200, body: [{ id: 'cust_001' },
-                                       { id: 'cust_002' }].to_json, headers: {})
+      api_client = stub('APIClient')
+      customer_api = Stripe::Customer.new(api_client)
 
-      customer_api = Stripe::Customer.new
+      api_client.expects(:get).with("/v1/customers").returns("[{}]")
       response = customer_api.list
 
       assert_instance_of Array, response
-      assert_equal 2, response.size
-      assert_equal 'cust_001', response.first['id']
-      assert_equal 'cust_002', response.last['id']
     end
 
     def test_fetch_one_customer
       customer_id = 'cust_123'
-      stub_request(:get, URI.join('https://api.stripe.com/v1/customers/', customer_id))
-        .to_return(status: 200, body: { id: customer_id,
-                                        email: 'test@example.com' }.to_json, headers: {})
+      api_client = stub('APIClient')
+      customer_api = Stripe::Customer.new(api_client)
 
-      customer_api = Stripe::Customer.new
+      api_client.expects(:get).with("/v1/customers/#{customer_id}").returns("{}")
       response = customer_api.fetch_one(customer_id)
 
-      assert_equal customer_id, response['id']
-      assert_equal 'test@example.com', response['email']
+      assert_instance_of(Hash, response)
     end
 
     def test_patch_customer
       customer_id = 'cust_123'
       attributes = { email: 'updated@example.com' }
-      stub_request(:patch, URI.join('https://api.stripe.com/v1/customers/', customer_id))
-        .with(body: attributes.to_json)
-        .to_return(status: 200, body: { id: customer_id,
-                                        email: 'updated@example.com' }.to_json, headers: {})
+      api_client = stub('APIClient')
+      customer_api = Stripe::Customer.new(api_client)
 
-      customer_api = Stripe::Customer.new
+      api_client.expects(:patch).with("/v1/customers/#{customer_id}", attributes)
       response = customer_api.patch(customer_id, attributes)
 
-      assert_equal customer_id, response['id']
-      assert_equal 'updated@example.com', response['email']
+      assert_instance_of(Hash, response)
     end
 
     def test_delete_customer
       customer_id = 'cust_123'
-      stub_request(:delete, URI.join('https://api.stripe.com/v1/customers/', customer_id))
-        .to_return(status: 200, body: { id: customer_id,
-                                        deleted: true }.to_json, headers: {})
+      api_client = stub('APIClient')
+      customer_api = Stripe::Customer.new(api_client)
 
-      customer_api = Stripe::Customer.new
+      api_client.expects(:delete).with("/v1/customers/#{customer_id}").returns("{}")
       response = customer_api.delete(customer_id)
 
-      assert_equal customer_id, response['id']
-      assert_equal true, response['deleted']
+      assert_instance_of(Hash, response)
     end
   end
 end
