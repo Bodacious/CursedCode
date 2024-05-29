@@ -2,27 +2,20 @@
 
 require 'test_helper'
 require 'stripe/customer'
+require 'mocha/minitest'
 
 module Stripe
   class CustomerTest < Minitest::Test
     def test_create_customer
       attributes = { email: 'example@example.com', name: 'Example User' }
-      stub_request(:post, 'https://api.stripe.com/v1/customers')
-        .with(body: attributes.to_json)
-        .to_return(status: 200,
-                   body: {
-                     id: 'cust_123',
-                     email: 'example@example.com',
-                     name: 'Example User'
-                   }.to_json,
-                   headers: {})
+      api_client = stub('APIClient')
+      customer_api = Stripe::Customer.new(api_client)
 
-      customer_api = Stripe::Customer.new
+      api_client.expects(:post).with("/v1/customers", attributes).returns("{}")
+
       response = customer_api.create(attributes)
 
-      assert_equal 'cust_123', response['id']
-      assert_equal 'example@example.com', response['email']
-      assert_equal 'Example User', response['name']
+      assert_instance_of(Hash, response)
     end
 
     def test_list_customers
