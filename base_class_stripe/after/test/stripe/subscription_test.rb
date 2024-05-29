@@ -11,7 +11,7 @@ module Stripe
       api_client = stub('APIClient')
 
       subscription_api = Stripe::Subscription.new(api_client)
-      api_client.expects(:post).with('/v1/subscriptions', attributes).returns("{}")
+      api_client.expects(:post).with('/v1/subscriptions', attributes).returns({})
       response = subscription_api.create('cust_123', 'price_001')
 
       assert_instance_of(Hash, response)
@@ -22,7 +22,7 @@ module Stripe
       api_client = stub('APIClient')
       subscription_api = Stripe::Subscription.new(api_client)
 
-      api_client.expects(:get).with("/v1/subscriptions/#{subscription_id}").returns("{}")
+      api_client.expects(:get).with("/v1/subscriptions/#{subscription_id}").returns({})
       response = subscription_api.fetch_one(subscription_id)
 
       assert_instance_of(Hash, response)
@@ -36,7 +36,7 @@ module Stripe
 
       api_client.expects(:post)
                 .with("/v1/subscriptions/#{subscription_id}", {billing_cycle_anchor: 'now' })
-                .returns("{}")
+                .returns({})
       response = subscription_api.resume(subscription_id, attributes)
 
       assert_instance_of(Hash, response)
@@ -47,7 +47,7 @@ module Stripe
       api_client = stub('APIClient')
       subscription_api = Stripe::Subscription.new(api_client)
 
-      api_client.expects(:delete).with("/v1/subscriptions/#{subscription_id}").returns("{}")
+      api_client.expects(:delete).with("/v1/subscriptions/#{subscription_id}").returns({})
       response = subscription_api.cancel(subscription_id)
 
       assert_instance_of(Hash, response)

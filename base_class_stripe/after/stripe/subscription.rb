@@ -15,33 +15,25 @@ module Stripe
     def create(customer, price)
       attributes = { customer: customer, items: [{ price: price }] }
 
-      response = api_client.post(SUBSCRIPTION_BASE_URL, attributes)
-
-      JSON.parse(response)
+      api_client.post(SUBSCRIPTION_BASE_URL, attributes)
     end
 
     def fetch_one(id)
       endpoint = [SUBSCRIPTION_BASE_URL, id].join('/')
 
-      response = api_client.get(endpoint)
-
-      JSON.parse(response)
+       api_client.get(endpoint)
     end
 
     def resume(id, _attributes)
       endpoint = [SUBSCRIPTION_BASE_URL, id].join('/')
 
-      response = api_client.post(endpoint, { billing_cycle_anchor: 'now' })
-
-      JSON.parse(response)
+       api_client.post(endpoint, { billing_cycle_anchor: 'now' })
     end
 
     def cancel(id)
       endpoint = [SUBSCRIPTION_BASE_URL, id].join('/')
 
-      response = api_client.delete(endpoint)
-
-      JSON.parse(response)
+      api_client.delete(endpoint)
     end
   end
 end

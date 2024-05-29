@@ -13,47 +13,35 @@ module Stripe
     end
 
     def list
-      response = api_client.get(CUSTOMER_BASE_URL)
-
-      JSON.parse(response)
+      api_client.get(CUSTOMER_BASE_URL)
     end
 
     def create(attributes)
-      response = api_client.post(CUSTOMER_BASE_URL, attributes)
-
-      JSON.parse(response)
+      api_client.post(CUSTOMER_BASE_URL, attributes)
     end
 
     def fetch_one(id)
       endpoint = [CUSTOMER_BASE_URL, id].join('/')
 
-      response = api_client.get(endpoint)
-
-      JSON.parse(response)
+      api_client.get(endpoint)
     end
 
     def patch(id, attributes)
       endpoint = [CUSTOMER_BASE_URL, id].join('/')
 
-      response = api_client.patch(endpoint, attributes)
-
-      JSON.parse(response)
+       api_client.patch(endpoint, attributes)
     end
 
     def delete(id)
       endpoint = [CUSTOMER_BASE_URL, id].join('/')
 
-      response = api_client.delete(endpoint)
-
-      JSON.parse(response)
+       api_client.delete(endpoint)
     end
 
     def search(query)
       endpoint = "#{CUSTOMER_BASE_URL}?query:#{query}"
 
-      response = get(endpoint)
-
-      JSON.parse(response)
+      get(endpoint)
     end
   end
 end
