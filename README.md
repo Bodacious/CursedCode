@@ -29,3 +29,5 @@ All code examples are organised into their own directories. Each directory conta
 Browse the pull requests and vote for the suggestions you'd like to see refactored by giving them a 👍 thumbs-up emoji.
 
 Happy coding! 💀👾
+
+[![Lint Ruby with RuboCop](https://github.com/Bodacious/CursedCode/actions/workflows/lint.yml/badge.svg?branch=main)](https://github.com/Bodacious/CursedCode/actions/workflows/lint.yml)
