@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'base'
+require_relative "base"
 
 module Stripe
   class Subscription < Base
@@ -15,7 +15,7 @@ module Stripe
     end
 
     def fetch_one(id)
-      endpoint = [SUBSCRIPTION_BASE_URL, id].join('/')
+      endpoint = [SUBSCRIPTION_BASE_URL, id].join("/")
 
       response = get(endpoint)
 
@@ -23,15 +23,15 @@ module Stripe
     end
 
     def resume(id, _attributes)
-      endpoint = [SUBSCRIPTION_BASE_URL, id].join('/')
+      endpoint = [SUBSCRIPTION_BASE_URL, id].join("/")
 
-      response = post(endpoint, { billing_cycle_anchor: 'now' })
+      response = post(endpoint, { billing_cycle_anchor: "now" })
 
       JSON.parse(response)
     end
 
     def cancel(id)
-      endpoint = [SUBSCRIPTION_BASE_URL, id].join('/')
+      endpoint = [SUBSCRIPTION_BASE_URL, id].join("/")
 
       response = delete(endpoint)
 

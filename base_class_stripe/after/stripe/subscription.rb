@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative 'api_client'
+require_relative "api_client"
 
 module Stripe
   class Subscription
-    SUBSCRIPTION_BASE_URL = '/v1/subscriptions'
+    SUBSCRIPTION_BASE_URL = "/v1/subscriptions"
 
     attr_reader :api_client
 
@@ -19,19 +19,19 @@ module Stripe
     end
 
     def fetch_one(id)
-      endpoint = [SUBSCRIPTION_BASE_URL, id].join('/')
+      endpoint = [SUBSCRIPTION_BASE_URL, id].join("/")
 
       api_client.get(endpoint)
     end
 
     def resume(id, _attributes)
-      endpoint = [SUBSCRIPTION_BASE_URL, id].join('/')
+      endpoint = [SUBSCRIPTION_BASE_URL, id].join("/")
 
-      api_client.post(endpoint, { billing_cycle_anchor: 'now' })
+      api_client.post(endpoint, { billing_cycle_anchor: "now" })
     end
 
     def cancel(id)
-      endpoint = [SUBSCRIPTION_BASE_URL, id].join('/')
+      endpoint = [SUBSCRIPTION_BASE_URL, id].join("/")
 
       api_client.delete(endpoint)
     end

@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative 'api_client'
+require_relative "api_client"
 
 module Stripe
   class Customer
-    CUSTOMER_BASE_URL = '/v1/customers'
+    CUSTOMER_BASE_URL = "/v1/customers"
 
     attr_reader :api_client
 
@@ -21,19 +21,19 @@ module Stripe
     end
 
     def fetch_one(id)
-      endpoint = [CUSTOMER_BASE_URL, id].join('/')
+      endpoint = [CUSTOMER_BASE_URL, id].join("/")
 
       api_client.get(endpoint)
     end
 
     def patch(id, attributes)
-      endpoint = [CUSTOMER_BASE_URL, id].join('/')
+      endpoint = [CUSTOMER_BASE_URL, id].join("/")
 
       api_client.patch(endpoint, attributes)
     end
 
     def delete(id)
-      endpoint = [CUSTOMER_BASE_URL, id].join('/')
+      endpoint = [CUSTOMER_BASE_URL, id].join("/")
 
       api_client.delete(endpoint)
     end

@@ -12,3 +12,6 @@ Metrics/MethodLength:
 
 Style/HashSyntax:
   EnforcedShorthandSyntax: never
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes # as God intended!

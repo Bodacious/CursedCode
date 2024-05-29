@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require 'rest-client'
+require "rest-client"
 
 module Stripe
   class Base
-    BASE_URL = 'https://api.stripe.com'
+    BASE_URL = "https://api.stripe.com"
 
     def post(url, payload)
       RestClient.post(url, payload.to_json, { **api_headers })
@@ -26,8 +26,8 @@ module Stripe
 
     def api_headers
       {
-        accept: 'application/json',
-        content_type: 'application/json',
+        accept: "application/json",
+        content_type: "application/json",
         authorization: "Bearer #{ENV.fetch('STRIPE_API_KEY', nil)}"
       }
     end

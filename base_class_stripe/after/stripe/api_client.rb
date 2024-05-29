@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require 'rest-client'
-require 'forwardable'
-require 'json'
+require "rest-client"
+require "forwardable"
+require "json"
 module Stripe
   class APIClient
     extend Forwardable
 
-    BASE_URL = 'https://api.stripe.com'
+    BASE_URL = "https://api.stripe.com"
 
     def_delegator :JSON, :parse, :parse_json
 
@@ -47,8 +47,8 @@ module Stripe
 
     def api_headers
       {
-        accept: 'application/json',
-        content_type: 'application/json',
+        accept: "application/json",
+        content_type: "application/json",
         authorization: "Bearer #{ENV.fetch('STRIPE_API_KEY', nil)}"
       }
     end
