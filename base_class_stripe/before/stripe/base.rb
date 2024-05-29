@@ -11,7 +11,7 @@ module Stripe
     end
 
     def get(url, params: {})
-      RestClient.get(url, { **api_headers, params: })
+      RestClient.get(url, { **api_headers, params: params })
     end
 
     def patch(url, payload)

@@ -35,7 +35,7 @@ module Stripe
       subscription_api = Stripe::Subscription.new(api_client)
 
       api_client.expects(:post)
-                .with("/v1/subscriptions/#{subscription_id}", {billing_cycle_anchor: 'now' })
+                .with("/v1/subscriptions/#{subscription_id}", { billing_cycle_anchor: 'now' })
                 .returns({})
       response = subscription_api.resume(subscription_id, attributes)
 

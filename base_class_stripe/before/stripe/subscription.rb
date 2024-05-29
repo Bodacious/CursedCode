@@ -7,7 +7,7 @@ module Stripe
     SUBSCRIPTION_BASE_URL = "#{BASE_URL}/v1/subscriptions".freeze
 
     def create(customer, price)
-      attributes = { customer:, items: [{ price: }] }
+      attributes = { customer: customer, items: [{ price: price }] }
 
       response = post(SUBSCRIPTION_BASE_URL, attributes)
 

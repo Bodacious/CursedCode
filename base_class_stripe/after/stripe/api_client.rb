@@ -40,6 +40,7 @@ module Stripe
     def parse_json(json_string)
       JSON.parse(json_string)
     end
+
     def url_for_path(path)
       URI.join(BASE_URL, path).to_s
     end

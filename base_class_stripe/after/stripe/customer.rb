@@ -29,13 +29,13 @@ module Stripe
     def patch(id, attributes)
       endpoint = [CUSTOMER_BASE_URL, id].join('/')
 
-       api_client.patch(endpoint, attributes)
+      api_client.patch(endpoint, attributes)
     end
 
     def delete(id)
       endpoint = [CUSTOMER_BASE_URL, id].join('/')
 
-       api_client.delete(endpoint)
+      api_client.delete(endpoint)
     end
 
     def search(query)

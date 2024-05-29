@@ -14,4 +14,4 @@ gem 'pry', '~> 0.14.2'
 
 gem 'rubocop', '~> 1.63', require: false
 
-gem "mocha", require: false
+gem 'mocha', require: false

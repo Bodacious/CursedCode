@@ -21,13 +21,13 @@ module Stripe
     def fetch_one(id)
       endpoint = [SUBSCRIPTION_BASE_URL, id].join('/')
 
-       api_client.get(endpoint)
+      api_client.get(endpoint)
     end
 
     def resume(id, _attributes)
       endpoint = [SUBSCRIPTION_BASE_URL, id].join('/')
 
-       api_client.post(endpoint, { billing_cycle_anchor: 'now' })
+      api_client.post(endpoint, { billing_cycle_anchor: 'now' })
     end
 
     def cancel(id)
