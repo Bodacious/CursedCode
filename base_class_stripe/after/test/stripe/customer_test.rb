@@ -45,7 +45,7 @@ module Stripe
       api_client = stub('APIClient')
       customer_api = Stripe::Customer.new(api_client)
 
-      api_client.expects(:patch).with("/v1/customers/#{customer_id}", attributes)
+      api_client.expects(:patch).with("/v1/customers/#{customer_id}", attributes).returns("{}")
       response = customer_api.patch(customer_id, attributes)
 
       assert_instance_of(Hash, response)
@@ -54,9 +54,10 @@ module Stripe
     def test_delete_customer
       customer_id = 'cust_123'
       api_client = stub('APIClient')
-      customer_api = Stripe::Customer.new(api_client)
 
+      customer_api = Stripe::Customer.new(api_client)
       api_client.expects(:delete).with("/v1/customers/#{customer_id}").returns("{}")
+
       response = customer_api.delete(customer_id)
 
       assert_instance_of(Hash, response)
