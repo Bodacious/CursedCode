@@ -3,17 +3,23 @@
 require_relative 'api_client'
 
 module Stripe
-  class Customer < APIClient
-    CUSTOMER_BASE_URL = "#{BASE_URL}/v1/customers".freeze
+  class Customer
+    CUSTOMER_BASE_URL = '/v1/customers'
+
+    attr_reader :api_client
+
+    def initialize(api_client = APIClient.new)
+      @api_client = api_client
+    end
 
     def list
-      response = get(CUSTOMER_BASE_URL)
+      response = api_client.get(CUSTOMER_BASE_URL)
 
       JSON.parse(response)
     end
 
     def create(attributes)
-      response = post(CUSTOMER_BASE_URL, attributes)
+      response = api_client.post(CUSTOMER_BASE_URL, attributes)
 
       JSON.parse(response)
     end
@@ -21,7 +27,7 @@ module Stripe
     def fetch_one(id)
       endpoint = [CUSTOMER_BASE_URL, id].join('/')
 
-      response = get(endpoint)
+      response = api_client.get(endpoint)
 
       JSON.parse(response)
     end
@@ -29,7 +35,7 @@ module Stripe
     def patch(id, attributes)
       endpoint = [CUSTOMER_BASE_URL, id].join('/')
 
-      response = super(endpoint, attributes)
+      response = api_client.patch(endpoint, attributes)
 
       JSON.parse(response)
     end
@@ -37,7 +43,7 @@ module Stripe
     def delete(id)
       endpoint = [CUSTOMER_BASE_URL, id].join('/')
 
-      response = super(endpoint)
+      response = api_client.delete(endpoint)
 
       JSON.parse(response)
     end
